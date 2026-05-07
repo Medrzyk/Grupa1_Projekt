@@ -1,54 +1,53 @@
-===PROJEKT===
+===PROJEKT - ETAP 3===
 Numer grupy: 1
-Nazwa projektu: Analiza zachowań zakupowych klientów (Customer Purchase Behavior)
-Opis: Celem projektu jest analiza ustrukturyzowanych danych sprzedażowych w celu zidentyfikowania czynników wpływających na wysokość wydatków klientów oraz popularność produktów w zależności od sezonu.
+Nazwa projektu: Analiza sentymentu i trendów sprzedażowych Amazon (LLM Integration)
+Opis: Projekt skupia się na analizie danych ustrukturyzowanych z Amazon Sales Dataset. W trzecim etapie zintegrowano model LLM do automatycznej analizy wydźwięku (sentiment analysis) recenzji klientów.
 
 ===GRUPA===
 Lab grupa, ID, Nazwisko, Imie
 2, 71642, Oleszczyński, Karol
 2, 72559, Mędrzycki, Jakub
-2, 72687, Ościłowski , Mariusz
+2, 72687, Ościłowski, Mariusz
 
-===WKLAD===
-ID, Nazwisko, Imie: Krótki opis wkładu każdego studenta do grupowego projektu na tym etapie.
-72559, Medrzycki, Jakub: Stworzenie repozytorium na GitHub, napisanie kodu głównego (main.py), przeprowadzenie wstępnej analizy danych i sformułowanie pytań badawczych.
-71642, Oleszczyński, Karol: Przygotowanie dokumentacji technicznej, opracowanie pliku README oraz struktury raportu końcowego dla Etapu 2.
-72687, Ościłowski Mariusz: Analiza merytoryczna wyników, interpretacja wykresów oraz końcowa redakcja raportu PDF.
+===WKLAD - ETAP 3===
+72559, Mędrzycki, Jakub: Implementacja potoku Transformers (sentiment-analysis), dobór modelu DistilBERT, przetwarzanie danych Amazon.csv.
+71642, Oleszczyński, Karol: Opracowanie merytorycznej struktury raportu PDF i uzasadnienia wyboru modelu. Współautor dokumentacji README (część opisowa) oraz koordynacja spójności etapów projektu.
+72687, Ościłowski, Mariusz: Analiza merytoryczna wyników modelu, interpretacja wygenerowanych wykresów oraz końcowa korekta raportu pod kątem wymagań technicznych.
+
 
 ===PYTANIA BADAWCZE===
-1. Czy rodzaj dostawy wpływa na kwotę zakupu?
-2. Jak sezony wpływają na popularność produktów?
-3. Która kategoria produktów generuje największe przychody?
+1. Jaki jest wpływ wysokości rabatów na oceny produktów wystawiane przez klientów?
+2. Które kategorie produktów na Amazonie generują największe zaangażowanie (liczbę opinii)?
+3. Czy stopień zadowolenia klienta (ocena) koreluje z długością wystawianej recenzji?
+4. (Etap 3) W jakim stopniu model LLM (DistilBERT) poprawnie interpretuje wydźwięk recenzji w porównaniu do ocen numerycznych?
 
 ===ZRODLA DANYCH===
-Nazwa zrodla: Kaggle
-Nazwa danych: Customer Purchase Behavior Analysis
-Dataset URL: https://www.kaggle.com/datasets/arfeenkabir/customer-purchase-behavior-analysis
+Nazwa danych: Amazon Sales Dataset
+Dataset URL: https://www.kaggle.com/datasets/karkavelrajaj/amazon-sales-dataset
 
-===ZMIENNE===
-Customer ID, Age, Gender, Item Purchased, Category, Purchase Amount (USD), Location, Size, Color, Season, Review Rating, Subscription Status, Payment Method, Shipping Type, Discount Applied, Promo Code Used, Previous Purchases, Preferred Payment Method, Frequency of Purchases
+===ZMIENNE KLUCZOWE===
+product_name, category, rating, rating_count, discount_percentage, review_content
 
-===CECHY===
-Average_Purchase_Amount_Per_Category, Popular_Product_By_Season, Shipping_Type_Mean_Spend
+===CECHY WYPROWADZONE===
+main_category, review_length, ai_sentiment (predykcja modelu)
 
-===ANALIZA===
-1. Analiza średniej kwoty zakupu w zależności od wybranego rodzaju dostawy (wykres słupkowy).
-2. Segmentacja 5 najpopularniejszych produktów dla każdego z czterech sezonów.
-3. Porównanie średnich przychodów generowanych przez główne kategorie produktów.
+===MODEL LLM (ETAP 3)===
+Nazwa: distilbert-base-uncased-finetuned-sst-2-english
+Typ: Text Classification (Sentiment Analysis)
+Zastosowanie: Automatyczna klasyfikacja treści recenzji na pozytywne i negatywne.
 
 ===SRODOWISKO===
 Python version: 3.13.13
-Main libraries: pandas==3.0.2, matplotlib==3.10.8
+Biblioteki: pandas==3.0.2, matplotlib==3.10.8, transformers==4.44.2, torch==2.4.0
 
-===ZAWARTOSC===
-P2_01_AnalizaZakupow/
-|--- README.txt
-|--- main.py
-|--- raport.pdf
-|--- requirements.txt
+===ZAWARTOSC REPOZYTORIUM===
+Grupa1_Projekt/
 |--- Data/
-|   |--- shopping_trends.csv
+|   |--- amazon.csv
 |--- outputs/
-    |--- Wykres1.png
-    |--- Wykres2.png
-    |--- Wykres3.png
+|   |--- Wykres1.png 
+|   |--- Wykres2.png 
+|   |--- Wykres3.png 
+|--- main.py 
+|--- requirements.txt
+|--- raport.pdf 
